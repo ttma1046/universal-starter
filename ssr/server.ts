@@ -13,7 +13,7 @@ import {join} from 'path';
 enableProdMode();
 
 // Express server
-const app = express();
+export const app = express();
 
 const PORT = process.env.PORT || 4000;
 const DIST_FOLDER = join(process.cwd(), 'dist');
@@ -42,10 +42,5 @@ app.get('*.*', express.static(join(DIST_FOLDER, 'browser'), {
 
 // All regular routes use the Universal engine
 app.get('*', (req, res) => {
-  res.render('index', { req });
-});
-
-// Start up the Node server
-app.listen(PORT, () => {
-  console.log(`Node Express server listening on http://localhost:${PORT}`);
+  res.render(join(process.cwd(), 'dist', 'browser', 'index.html'), {req});
 });

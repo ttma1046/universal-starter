@@ -1,5 +1,5 @@
 {
-  "name": "ng-universal-demo",
+  "name": "ng-ssr-aws-lambda",
   "version": "0.0.0",
   "license": "MIT",
   "repository": {
@@ -21,15 +21,16 @@
     "build": "ng build",
     "lint": "ng lint ng-universal-demo",
     "build:client-and-server-bundles": "ng build --prod && ng run ng-universal-demo:server:production",
-    "build:prerender": "npm run build:client-and-server-bundles && npm run compile:server && npm run generate:prerender",
-    "build:ssr": "npm run build:client-and-server-bundles && npm run compile:server",
     "compile:server": "tsc -p server.tsconfig.json",
+    "build:ssr": "npm run build:client-and-server-bundles && npm run compile:server",
+    "serve:ssr": "node dist/server",
+    "build:prerender": "npm run build:client-and-server-bundles && npm run compile:server && npm run generate:prerender",
     "generate:prerender": "cd dist && node prerender",
     "serve:prerender": "cd dist/browser && http-server",
-    "serve:ssr": "node dist/server"
+    "serverless": "serverless create --template aws-nodejs --name ng-ssr-aws-lambda"
   },
-  "pre-commit": [],
   "private": true,
+  "pre-commit": [],
   "dependencies": {
     "@angular/animations": "^6.0.0",
     "@angular/common": "^6.0.0",
@@ -44,8 +45,13 @@
     "@nguniversal/common": "^6.0.0",
     "@nguniversal/express-engine": "^6.0.0",
     "@nguniversal/module-map-ngfactory-loader": "^6.0.0",
+    "@types/aws-serverless-express": "^3.0.1",
+    "aws-serverless-express": "^3.3.5",
+    "copy-webpack-plugin": "^4.5.2",
     "core-js": "^2.4.1",
     "rxjs": "^6.2.2",
+    "serverless": "^1.30.3",
+    "serverless-webpack": "^5.2.0",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
