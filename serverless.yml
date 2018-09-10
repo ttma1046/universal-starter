@@ -20,6 +20,22 @@ service: ng-ssr-aws-lambda # NOTE: update this with your service name
 provider:
   name: aws
   runtime: nodejs8.10
+  region: ap-southeast-2
+  memorySize: 128
+plugins:
+- serverless-webpack
+custom:
+  webpack: lambda/webpack.config.js
+functions:
+  main:
+    handler: lambda/index.handler
+    events:
+    - http:
+        path: /
+        method: get
+    - http:
+        path: "{proxy+}"
+        method: get
 
 # you can overwrite defaults here
 #  stage: dev

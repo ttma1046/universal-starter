@@ -27,7 +27,9 @@
     "build:prerender": "npm run build:client-and-server-bundles && npm run compile:server && npm run generate:prerender",
     "generate:prerender": "cd dist && node prerender",
     "serve:prerender": "cd dist/browser && http-server",
-    "serverless": "serverless create --template aws-nodejs --name ng-ssr-aws-lambda"
+    "serverless": "serverless create --template aws-nodejs --name ng-ssr-aws-lambda",
+    "deploy:dev": "serverless deploy",
+    "deploy:prod": "serverless deploy --stage prod"
   },
   "private": true,
   "pre-commit": [],
