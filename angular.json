@@ -114,6 +114,7 @@
           },
           "configurations": {
             "production": {
+              "outputHashing": "none",
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",

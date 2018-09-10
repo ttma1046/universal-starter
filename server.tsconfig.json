@@ -16,5 +16,5 @@
       "dom"
     ]
   },
-  "include": ["server.ts", "prerender.ts"]
+  "include": ["./ssr/server.ts","./ssr/start.ts"]
 }

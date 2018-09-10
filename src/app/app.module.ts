@@ -4,7 +4,6 @@ import {RouterModule} from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import {TransferHttpCacheModule} from '@nguniversal/common';
 
 @NgModule({
   declarations: [
@@ -17,8 +16,7 @@ import {TransferHttpCacheModule} from '@nguniversal/common';
       { path: '', component: HomeComponent, pathMatch: 'full'},
       { path: 'lazy', loadChildren: './lazy/lazy.module#LazyModule'},
       { path: 'lazy/nested', loadChildren: './lazy/lazy.module#LazyModule'}
-    ]),
-    TransferHttpCacheModule,
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]
