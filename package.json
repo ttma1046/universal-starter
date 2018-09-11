@@ -1,5 +1,5 @@
 {
-  "name": "ng-ssr-aws-lambda",
+  "name": "universal-starter-serverless",
   "version": "0.0.0",
   "license": "MIT",
   "repository": {
@@ -20,14 +20,14 @@
     "start": "ng serve",
     "build": "ng build",
     "lint": "ng lint ng-universal-demo",
-    "build:client-and-server-bundles": "ng build --prod && ng run ng-universal-demo:server:production",
-    "webpack:server": "webpack --config ssr/webpack.server.config.js --progress --colors",
+    "build:client-and-server-bundles": "ng build --prod --base-href /dev/ && ng run ng-universal-demo:server:production",
+    "webpack:ssr": "webpack --config ssr/webpack.server.config.js --progress --colors",
     "build:ssr": "npm run build:client-and-server-bundles && npm run webpack:server",
     "serve:ssr": "node dist/server/start.js",
     "build:prerender": "npm run build:client-and-server-bundles && npm run compile:server && npm run generate:prerender",
     "generate:prerender": "cd dist && node prerender",
     "serve:prerender": "cd dist/browser && http-server",
-    "serverless": "serverless create --template aws-nodejs --name ng-ssr-aws-lambda",
+    "serverless": "serverless create --template aws-nodejs --name universal-starter-serverless",
     "deploy:dev": "serverless deploy",
     "deploy:prod": "serverless deploy --stage prod"
   },
